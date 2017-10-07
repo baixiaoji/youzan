@@ -1,15 +1,28 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import "css/common.css"
+import "./index.css"
+
+
 import Vue from 'vue'
-import App from './App'
-import router from './router'
-
-Vue.config.productionTip = false
-
-/* eslint-disable no-new */
+import axios from "axios"
+import url from "js/api.js"
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+    el:"#app",
+    data:{
+        lists:null,
+        pageNum:1,
+        pageSize:6
+    },
+    created(){
+        this.getLists()
+    },
+    methods:{
+        getLists(){
+            axios.post(url.hotLists,{
+                pageNum:this.pageNum,
+                pageSize:this.pageSize
+            }).then(res=>{
+                this.lists = res.data.lists
+            })
+        }
+    }
 })
