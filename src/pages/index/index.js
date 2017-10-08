@@ -5,6 +5,7 @@ import "./index.css"
 import Vue from 'vue'
 import axios from "axios"
 import url from "js/api.js"
+import foot from "components/foot.vue"
 new Vue({
     el:"#app",
     data:{
@@ -24,5 +25,8 @@ new Vue({
                 this.lists = res.data.lists
             })
         }
+    },
+    components:{
+        foot
     }
 })
