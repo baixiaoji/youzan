@@ -44,6 +44,11 @@ new Vue({
             })
         }
     },
+    filters:{
+        addZero(num){
+            return Number.prototype.toFixed.call(num,2)
+        }
+    },
     components:{
         Foot,
     }
