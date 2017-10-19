@@ -5,7 +5,7 @@ import Vue from "vue"
 import axios from "axios"
 import api from "js/api.js"
 import Foot from "components/Foot.vue"
-
+import mixin from "js/mixin.js"
 new Vue({
     el:"#app",
     data:{
@@ -42,13 +42,12 @@ new Vue({
             axios.post(api.rank).then(res=>{
                 this.rankData = res.data.data
             })
+        },
+        toSearch(list){
+            location.href = `search.html?id=${list.id}&name=${list.name}`
         }
     },
-    filters:{
-        addZero(num){
-            return Number.prototype.toFixed.call(num,2)
-        }
-    },
+    mixins:[mixin],
     components:{
         Foot,
     }
